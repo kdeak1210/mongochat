@@ -1,0 +1,23 @@
+{
+  "name": "mongochat",
+  "version": "1.0.0",
+  "description": "A chat application using mongodb and sockets",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdeak1210/mongochat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kdeak1210/mongochat/issues"
+  },
+  "homepage": "https://github.com/kdeak1210/mongochat#readme",
+  "dependencies": {
+    "mongodb": "^2.2.31",
+    "socket.io": "^2.0.3"
+  }
+}
