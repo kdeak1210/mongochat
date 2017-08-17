@@ -34,14 +34,15 @@ mongo.connect('mongodb://127.0.0.1/mongochat', function(err, db) {
     socket.on('input', function(data) {
       let name = data.name;
       let message = data.message;
+      let time = data.time;
 
       // Check for name and message (ensure included)
-      if (name == '' || message =='') {
+      if (name == '' || message == '') {
         // Send error status
         sendStatus('Please enter a name and message');
       } else {
         // Insert message
-        chat.insert({name: name, message: message}, function() {
+        chat.insert({name: name, message: message, time: time}, function() {
           client.emit('output', [data]);
 
           // Send status object

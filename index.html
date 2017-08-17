@@ -77,7 +77,7 @@
                 // Build out message div
                 var message = document.createElement('div');
                 message.setAttribute('class', 'chat-message');
-                message.textContent = data[x].name + ": " + data[x].message;
+                message.innerHTML = `[${data[x].time}] - <b>${data[x].name}</b>: ${data[x].message}`;
                 messages.appendChild(message);
                 messages.insertBefore(message, messages.firstChild);
               }
@@ -98,12 +98,14 @@
           // Handle input
           textarea.addEventListener('keydown', function(event) {
             if(event.which === 13 && event.shiftKey == false) {
+              // Get the current time
+              var time = new Date().toLocaleTimeString();
               // Emit to server input
               socket.emit('input', {
                 name: username.value,
-                message: textarea.value
+                message: textarea.value,
+                time: time
               });
-
               event.preventDefault();
             }
           });
@@ -111,6 +113,7 @@
           // Handle Chat clear
           clearBtn.addEventListener('click', function(event) {
             socket.emit('clear')
+            username.value = '';
           });
 
           // Clear message
